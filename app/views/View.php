@@ -1,14 +1,14 @@
 <?php
 
-// require_once './app/helpers/AuthHelper.php';
+require_once './app/helpers/AuthHelper.php';
 
 class View
 {
-    protected $session; //define si está iniciada la session o no 
+    protected $session;
 
     public function __construct()
     {
-        // $this->session = AuthHelper::check();
+        $this->session = AuthHelper::check();
     }
 
     public function showError()

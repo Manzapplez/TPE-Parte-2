@@ -42,10 +42,9 @@ class ArtistController
         $this->artistView->showFormAddArtist();
     }
 
-
     public function addArtist()
     {
-        // AuthHelper::verify();
+        AuthHelper::verify();
 
         $name = $_POST['name'];
         $biography = $_POST['biography'];
@@ -68,7 +67,7 @@ class ArtistController
 
     public function editArtist($id)
     {
-        // AuthHelper::verify();
+        AuthHelper::verify();
         $name = $_POST['name'];
         $biography = $_POST['biography'];
 
@@ -83,7 +82,7 @@ class ArtistController
 
     public function removeArtist($id)
     {
-        // AuthHelper::verify();
+        AuthHelper::verify();
         $this->artistModel->removeArtist($id);
         header('Location: ' . BASE_URL . 'artists');
         exit;

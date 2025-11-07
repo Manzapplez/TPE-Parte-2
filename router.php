@@ -2,7 +2,8 @@
 
 require_once './app/controllers/SongController.php';
 require_once './app/controllers/ArtistController.php';
-// require_once './app/controllers/AuthController.php';
+require_once './app/controllers/AuthController.php';
+require_once './app/helpers/AuthHelper.php';
 
 /* TABLA DE RUTEO
 ACCION					        URL		            DESTINO
@@ -32,13 +33,13 @@ class Router
 {
     private $songController;
     private $artistController;
-    // private $authController;
+    private $authController;
 
     public function __construct()
     {
         $this->songController = new SongController();
         $this->artistController = new ArtistController();
-        // $this->authController = new AuthController();
+        $this->authController = new AuthController();
     }
 
     public function route($action)
@@ -97,8 +98,7 @@ class Router
                 $this->artistController->removeArtist($params[1] ?? null);
                 break;
 
-                // AUTH
-                /*
+            // AUTH
             case 'login':
                 $this->authController->login();
                 break;
@@ -111,7 +111,6 @@ class Router
             default:
                 echo "Error 404: Página no encontrada";
                 break;
-                */
         }
     }
 }

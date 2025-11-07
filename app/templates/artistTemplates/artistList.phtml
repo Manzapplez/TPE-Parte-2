@@ -4,12 +4,11 @@
 <h1>ArtistList</h1>
 
 <!-- IF SESSION OFRECER ADD -->
-<?php //if ($this->session) :
-//endif 
-?>
-<form action="addArtistForm/">
-    <button type="submit">Agregar Artista</button>
-</form>
+<?php if ($this->session) : ?>
+    <form action="addArtistForm/">
+        <button type="submit">Agregar Artista</button>
+    </form>
+<?php endif ?>
 
 <table cellpadding="8" cellspacing="0">
 
@@ -18,9 +17,9 @@
             <th>Artista</th>
             <th>Biografía</th>
             <!-- ABM ACCIONES -->
-            <?php //if ($this->session) : 
-            ?><th>Acciones</th><?php //endif; 
-                                                                ?>
+            <?php if ($this->session) : ?>
+                <th>Acciones</th>
+            <?php endif; ?>
         </tr>
     </thead>
 
@@ -31,24 +30,23 @@
                 <tr>
                     <!-- artistDetail -->
                     <td><a
-                    href="artist/<?= $artist->id_artist ?>"
-                    >
-                        <?= $artist->name ?></a></td>
+                            href="artist/<?= $artist->id_artist ?>">
+                            <?= $artist->name ?></a></td>
 
                     <td><?= $artist->biography ?></td>
 
                     <!-- SI ESTA ACTIVA LA SESSION MOSTRAR BOTONES DE ABM -->
-                    <?php //if ($this->session) : 
+                    <?php if ($this->session) :
                     ?>
-                    <td>
-                        <form action="editArtistForm/<?= $artist->id_artist ?>">
-                            <button type="submit">Editar</button>
-                        </form>
-                        <form action="removeArtist/<?= $artist->id_artist ?>">
-                            <button type="submit" onclick="return confirm('¿Estás seguro de que queres borrar este artista?');">Borrar</button>
-                        </form>
-                    </td>
-                    <?php //endif 
+                        <td>
+                            <form action="editArtistForm/<?= $artist->id_artist ?>">
+                                <button type="submit">Editar</button>
+                            </form>
+                            <form action="removeArtist/<?= $artist->id_artist ?>">
+                                <button type="submit" onclick="return confirm('¿Estás seguro de que queres borrar este artista?');">Borrar</button>
+                            </form>
+                        </td>
+                    <?php endif
                     ?>
 
                 </tr>

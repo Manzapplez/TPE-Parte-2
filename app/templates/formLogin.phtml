@@ -1,21 +1,17 @@
 <?php require './app/templates/header.phtml' ?>
 
-<form action="doLogin" method="POST">
+<form action="auth" method="POST">
     <div>
 
-        <label>Usuario</label>
-        <input required name="user" type="text">
+        <label>Usuario
+            <input required name="username" type="text">
+        </label>
 
+        <label>Contraseña
+            <input required name="password" type="password">
+        </label>
 
-        <label>Contraseña</label>
-        <input required name="password" type="password">
-
-        <div>
-            <?php if (!empty($error)): ?>
-                <?= $error ?>
-            <?php endif; ?>
-        </div>
         <button type="submit">Login</button>
 </form>
 
-<?php require './app/templates/foooter.phtml' ?>
+<?php require './app/templates/footer.phtml' ?>

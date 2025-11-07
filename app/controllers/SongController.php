@@ -3,9 +3,6 @@
 require_once './app/models/SongModel.php';
 require_once './app/views/SongView.php';
 
-/* Intermediario entre SongView y SongModel, controla el flujo de la aplicación,
-procesa las solicitudes y valida la entrada de datos del usuario.
-Pide al model la info y se la lleva a la view para que muestre. */
 class SongController
 {
     private $songModel;
@@ -20,27 +17,23 @@ class SongController
         $this->songView = new SongView();
     }
 
-    //      songs
     public function showSongs()
     {
         $songs = $this->songModel->getSongs();
         $this->songView->showSongs($songs);
     }
 
-    //      songsByArtist
-        public function showSongsByArtist($id_artist)
+    public function showSongsByArtist($id_artist)
     {
         $songs = $this->songModel->getSongsByArtist($id_artist);
         $this->songView->showSongs($songs);
     }
 
-    //      song/id
     public function showSong($id)
     {
         $song = $this->songModel->getSong($id);
         if (!$song) {
-            $this->songView->showError();
-            // ARREGLAR MENSAJES DE ERROR
+            $this->songView->showError("ddddddddddddddd");
         }
         $this->songView->showSong($song);
     }
@@ -61,7 +54,7 @@ class SongController
 
     public function addSong()
     {
-        // AuthHelper::verify();
+        AuthHelper::verify();
 
         $id_artist = $_POST['id_artist'] ?? null;
         $title = $_POST['title'] ?? null;
@@ -85,7 +78,7 @@ class SongController
 
     public function editSong($id)
     {
-        // AuthHelper::verify();
+        AuthHelper::verify();
 
         $id_artist = $_POST['id_artist'] ?? null;
         $title = $_POST['title'] ?? null;
@@ -103,7 +96,7 @@ class SongController
 
     public function removeSong($id)
     {
-        // AuthHelper::verify();
+        AuthHelper::verify();
 
         $this->songModel->removeSong($id);
 
