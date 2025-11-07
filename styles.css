@@ -1,0 +1,22 @@
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    padding: 10px 20px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 1em;
+}
+
+small {
+    display: block;
+    color: #555;
+    font-size: 0.9em;
+}

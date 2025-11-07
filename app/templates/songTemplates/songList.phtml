@@ -1,0 +1,72 @@
+<?php require './app/templates/header.phtml' ?>
+
+<!-- songList.phtml -->
+<h1>SongList</h1>
+
+<!-- IF SESSION OFRECER ADD BUTTON -->
+<?php //if ($this->session) : //endif 
+?>
+
+<a href="addSongForm/">
+    <button type="submit">Agregar una canción</button>
+</a>
+
+<table cellpadding="8" cellspacing="0">
+
+    <thead>
+        <tr>
+            <th>Canción</th>
+            <th>Artista</th>
+            <th>Álbum</th>
+            <th>Duración</th>
+            <!-- ABM ACCIONES -->
+            <?php //if ($this->session) : 
+            ?>
+            <th>Acciones</th>
+            <?php //endif; 
+            ?>
+        </tr>
+    </thead>
+
+    <tbody>
+        <?php if (!empty($songs)): ?>
+
+            <?php foreach ($songs as $song): ?>
+                <tr>
+                    <!-- songDetail -->
+                    <td><a href="song/<?= $song->id_song ?>"><?= $song->title ?></a></td>
+
+                    <!--  artistDetail  -->
+                    <td><a href="artist/<?= $song->id_artist ?>"><?= htmlspecialchars($song->name) ?></a></td>
+
+                    <td><?= $song->album ?></td>
+                    <td><?= $song->duration ?></td>
+
+                    <!-- SI ESTA ACTIVA LA SESSION MOSTRAR BOTONES DE ABM -->
+                    <?php //if ($this->session) : 
+                    ?>
+                    <td>
+                        <!-- arreglar edit, que direccione al detalle listo para editar? -->
+                        <form action="editSongForm/<?= $song->id_song ?>">
+                            <button type="submit">Editar</button>
+                        </form>
+                        <form action="removeSong/<?= $song->id_song ?>">
+                            <button type="submit" onclick="return confirm('¿Estás seguro de que queres borrar esta canción?');">Borrar</button>
+                        </form>
+                    </td>
+                    <?php //endif 
+                    ?>
+
+                </tr>
+            <?php endforeach; ?>
+
+        <?php else: ?>
+            <tr>
+                <td>No hay canciones para mostrar.</td>
+            </tr>
+        <?php endif; ?>
+    </tbody>
+
+</table>
+
+<?php require './app/templates/footer.phtml' ?>

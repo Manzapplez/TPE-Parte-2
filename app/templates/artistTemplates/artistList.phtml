@@ -1,0 +1,67 @@
+<?php require './app/templates/header.phtml' ?>
+
+<!-- artistList.phtml -->
+<h1>ArtistList</h1>
+
+<!-- IF SESSION OFRECER ADD -->
+<?php //if ($this->session) :
+//endif 
+?>
+<form action="addArtistForm/">
+    <button type="submit">Agregar Artista</button>
+</form>
+
+<table cellpadding="8" cellspacing="0">
+
+    <thead>
+        <tr>
+            <th>Artista</th>
+            <th>Biografía</th>
+            <!-- ABM ACCIONES -->
+            <?php //if ($this->session) : 
+            ?><th>Acciones</th><?php //endif; 
+                                                                ?>
+        </tr>
+    </thead>
+
+    <tbody>
+        <?php if (!empty($artists)): ?>
+
+            <?php foreach ($artists as $artist): ?>
+                <tr>
+                    <!-- artistDetail -->
+                    <td><a
+                    href="artist/<?= $artist->id_artist ?>"
+                    >
+                        <?= $artist->name ?></a></td>
+
+                    <td><?= $artist->biography ?></td>
+
+                    <!-- SI ESTA ACTIVA LA SESSION MOSTRAR BOTONES DE ABM -->
+                    <?php //if ($this->session) : 
+                    ?>
+                    <td>
+                        <!-- editar el edit lol -->
+                        <form action="editArtistForm/<?= $artist->id_artist ?>">
+                            <button type="submit">Editar</button>
+                        </form>
+                        <form action="removeArtist/<?= $artist->id_artist ?>">
+                            <button type="submit" onclick="return confirm('¿Estás seguro de que queres borrar este artista?');">Borrar</button>
+                        </form>
+                    </td>
+                    <?php //endif 
+                    ?>
+
+                </tr>
+            <?php endforeach; ?>
+
+        <?php else: ?>
+            <tr>
+                <td>No hay artistas para mostrar.</td>
+            </tr>
+        <?php endif; ?>
+    </tbody>
+
+</table>
+
+<?php require './app/templates/footer.phtml' ?>

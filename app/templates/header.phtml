@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="<?= BASE_URL ?>">
+    <link rel="stylesheet" href="styles.css">
+    <title>SoundSnack</title>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+
+        <?php
+        // require_once './app/helpers/AuthHelper.php';
+        // AuthHelper::init();
+        // if (isset($_SESSION['USER_NAME'])) {
+        //     echo "<p>Sesión iniciada como {$_SESSION['USER_NAME']}</p>";
+        // } else {
+        //     echo "<p>Sin sesión activa</p>";
+        // }
+        ?>
+
+        <!-- NAV -->
+        <nav>
+            <!-- Public Access -->
+            <li><a href="songs">Canciones</a></li>
+            <li><a href="artists">Artistas</a></li>
+            <!-- Admin Access -->
+            <?php // if ($this->session) : ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="logout">Logout</a>
+                </li>
+            <?php // else : ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="login">Login</a>
+                </li>
+            <?php // endif; ?>
+        </nav>
+    </header>
+</body>

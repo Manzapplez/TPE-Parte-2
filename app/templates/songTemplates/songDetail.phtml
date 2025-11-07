@@ -1,0 +1,29 @@
+<?php require './app/templates/header.phtml' ?>
+
+<div>
+    <h2><?= $song->title ?>, de <a href="artist/<?= $song->id_artist ?>"><?= htmlspecialchars($song->name) ?></a></h2>
+    <p> Álbum: <?= $song->album ?></p>
+    <p> Duracion: <?= $song->duration ?></p>
+    <p> Géneros: <?= $song->genre ?></p>
+    <p><a target="_blank" href="<?= $song->video ?>"><?= $song->video ?></a></p>
+</div>
+
+<h4><a href="songs">Volver al listado de Canciones</a></h4>
+
+<!-- IF SESSION MOSTRAMOS FORMULARIO DE EDITAR O BOTON DE BORRAR -->
+<?php //if ($this->session) : 
+?>
+
+<a href="editSongForm/<?= $song->id_song ?>">
+    <button type="submit">Editar</button>
+</a>
+
+<form action="removeSong/<?= $song->id_song ?>">
+    <button type="submit" onclick="return confirm('¿Estás seguro de que queres borrar esta canción?');">Borrar</button>
+</form>
+<?php //endif 
+?>
+
+
+
+<?php require './app/templates/footer.phtml' ?>

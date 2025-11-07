@@ -1,0 +1,21 @@
+<?php require './app/templates/header.phtml' ?>
+
+<form action="doLogin" method="POST">
+    <div>
+
+        <label>Usuario</label>
+        <input required name="user" type="text">
+
+
+        <label>Contraseña</label>
+        <input required name="password" type="password">
+
+        <div>
+            <?php if (!empty($error)): ?>
+                <?= $error ?>
+            <?php endif; ?>
+        </div>
+        <button type="submit">Login</button>
+</form>
+
+<?php require './app/templates/foooter.phtml' ?>

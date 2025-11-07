@@ -1,0 +1,8 @@
+<?php require './app/templates/header.phtml' ?>
+
+<form action="editSong/<?= $song->id_song ?>" method="POST">
+    <?php require './app/templates/songTemplates/formSong.phtml' ?>
+    <button type="submit">Editar</button>
+</form>
+
+<?php require './app/templates/footer.phtml' ?>
