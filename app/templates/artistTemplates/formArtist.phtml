@@ -1,8 +1,14 @@
 <!-- formArtist.phtml -->
 <div>
-    <label for="name">Nombre</label>
-    <input required name="name" type="text" id="name" value="<?= $artist->name ?? ''   ?>">
+    <label>Nombre
+        <input required name="name" type="text" value="<?= $artist->name ?? ''   ?>">
+    </label>
 
-    <label for="biography">Biografia</label>
-    <input required name="biography" type="text" id="biography" value="<?= $artist->biography ?? ''  ?>">
+    <label>Biografia
+        <input required name="biography" type="text" value="<?= $artist->biography ?? ''  ?>">
+    </label>
+
+    <label>Imagen <!-- No tiene required -->
+        <input name="input_name" type="file" value="<?= $artist->image ?? ''  ?>">
+    </label>
 </div>

@@ -50,7 +50,10 @@ class ArtistController
         $name = $_POST['name'];
         $biography = $_POST['biography'];
 
-        $this->artistModel->addartist($name, $biography);
+        if ($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png")
+            $this->artistModel->addArtist($name, $biography,  $_FILES['input_name']['tmp_name']);
+        else
+            $this->artistModel->addArtist($name, $biography);
 
         header('Location: ' . BASE_URL . 'artists');
         exit;
@@ -63,19 +66,22 @@ class ArtistController
         $this->artistView->showFormEditArtist($artist);
     }
 
-    public function editartist($id)
+    public function editArtist($id)
     {
         // AuthHelper::verify();
         $name = $_POST['name'];
         $biography = $_POST['biography'];
 
-        $this->artistModel->editartist($id, $name, $biography);
+        if ($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png")
+            $this->artistModel->editArtist($id, $name, $biography,  $_FILES['input_name']['tmp_name']);
+        else
+            $this->artistModel->editArtist($id, $name, $biography);
 
         header('Location: ' . BASE_URL . 'artists');
         exit;
     }
 
-    public function removeartist($id)
+    public function removeArtist($id)
     {
         // AuthHelper::verify();
         $this->artistModel->removeArtist($id);

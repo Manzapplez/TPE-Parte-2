@@ -1,7 +1,7 @@
 <?php require './app/templates/header.phtml' ?>
 
 <!-- formEditArtist.phtml -->
-<form action="editArtist/<?= $artist->id_artist ?>" method="POST">
+<form action="editArtist/<?= $artist->id_artist ?>" method="POST" enctype="multipart/form-data">
     <?php require './app/templates/artistTemplates/formArtist.phtml' ?>
     <button type="submit">Editar</button>
 </form>

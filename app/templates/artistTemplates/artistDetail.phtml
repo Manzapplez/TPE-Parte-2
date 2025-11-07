@@ -4,6 +4,13 @@
 <div>
     <h2><?= $artist->name ?></h2>
     <p><?= $artist->biography ?></p>
+
+    <?php if (isset($artist->image)) : ?>
+        <img src="<?= $artist->image ?>" />
+    <?php else : ?>
+        <p>No hay una imagen disponible, si sos un usuario podes agregar una desde <a href='editArtistForm/<?= $artist->id_artist ?>'>editar!</a></p>
+    <?php endif ?>
+
     <h3><a href="songsByArtist/<?= $artist->id_artist ?>">Ver canciones de <?= $artist->name ?></a></h3>
 </div>
 

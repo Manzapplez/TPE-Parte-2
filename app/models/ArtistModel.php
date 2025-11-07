@@ -19,21 +19,38 @@ class artistModel extends Model
     }
 
     // ABM
-    public function addArtist($name, $biography)
+    public function addArtist($name, $biography, $image = null)
     {
-        $query = $this->db->prepare('INSERT INTO artists (name, biography) VALUES (?,?)');
-        $query->execute([$name, $biography]);
+        $pathImg = null;
+        if ($image)
+            $pathImg = $this->uploadImage($image);
+        $query = $this->db->prepare('INSERT INTO artists (name, biography, image) VALUES (?,?,?)');
+        $query->execute([$name, $biography, $pathImg]);
+
+        return $this->db->lastInsertId();
     }
 
-    public function editArtist($id, $name, $biography)
+    public function editArtist($id, $name, $biography, $image = null)
     {
-        $query = $this->db->prepare('UPDATE artists SET name = ?, biography = ? WHERE id_artist = ?');
-        $query->execute([$name, $biography, $id]);
+        $pathImg = null;
+        if ($image)
+            $pathImg = $this->uploadImage($image);
+        $query = $this->db->prepare('UPDATE artists SET name = ?, biography = ?, image = ? WHERE id_artist = ?');
+        $query->execute([$name, $biography, $pathImg, $id]);
+
+        return $this->db->lastInsertId();
     }
 
     public function removeArtist($id)
     {
         $query = $this->db->prepare('DELETE FROM artists WHERE id_artist=?');
         $query->execute([$id]);
+    }
+
+    private function uploadImage($image)
+    {
+        $target = 'images/artists/' . uniqid() . '.jpg';
+        move_uploaded_file($image, $target);
+        return $target;
     }
 }
