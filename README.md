@@ -19,4 +19,6 @@ Hay que loguear para ingresar a las funcionalidades de administrador (**user:** 
 ***
 ### TO-DO
 - ARREGLAR MENSAJES DE ERROR
+- ARREGLAR Mayusc/minusc en requires
+- Validar entrada de datos desde controller
 - update README
