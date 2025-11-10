@@ -56,10 +56,24 @@ class SongController
     {
         AuthHelper::verify();
 
-        $id_artist = $_POST['id_artist'] ?? null;
-        $title = $_POST['title'] ?? null;
-        $album = $_POST['album'] ?? null;
-        $duration = $_POST['duration'] ?? null;
+        if (!isset($_POST['id_artist']) || empty($_POST['id_artist']))
+            return $this->songView->showError("Falta artist");
+
+        if (!isset($_POST['title']) || empty($_POST['title']))
+            return $this->songView->showError("Falta title");
+
+        if (!isset($_POST['album']) || empty($_POST['album']))
+            return $this->songView->showError("Falta album");
+
+        if (!isset($_POST['duration']) || empty($_POST['duration']))
+            return $this->songView->showError("Falta duration");
+
+        $id_artist = $_POST['id_artist'];
+        $title = $_POST['title'];
+        $album = $_POST['album'];
+        $duration = $_POST['duration'];
+
+        // genre y video pueden ser null
         $genre = $_POST['genre'] ?? null;
         $video = $_POST['video'] ?? null;
 
@@ -80,14 +94,29 @@ class SongController
     {
         AuthHelper::verify();
 
-        $id_artist = $_POST['id_artist'] ?? null;
-        $title = $_POST['title'] ?? null;
-        $album = $_POST['album'] ?? null;
-        $duration = $_POST['duration'] ?? null;
+
+        if (!isset($_POST['id_artist']) || empty($_POST['id_artist']))
+            return $this->songView->showError("Falta artist");
+
+        if (!isset($_POST['title']) || empty($_POST['title']))
+            return $this->songView->showError("Falta title");
+
+        if (!isset($_POST['album']) || empty($_POST['album']))
+            return $this->songView->showError("Falta album");
+
+        if (!isset($_POST['duration']) || empty($_POST['duration']))
+            return $this->songView->showError("Falta duration");
+
+        $id_artist = $_POST['id_artist'];
+        $title = $_POST['title'];
+        $album = $_POST['album'];
+        $duration = $_POST['duration'];
+
+        // genre y video pueden ser null
         $genre = $_POST['genre'] ?? null;
         $video = $_POST['video'] ?? null;
 
-        // agregar mensajes de error o success. somehow
+        // agregar mensajes de error o success
         $success = $this->songModel->editSong($id, $id_artist, $title, $album, $duration, $genre, $video);
 
         header('Location: ' . BASE_URL . 'songs');

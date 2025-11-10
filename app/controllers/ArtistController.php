@@ -46,6 +46,12 @@ class ArtistController
     {
         AuthHelper::verify();
 
+        if (!isset($_POST['name']) || empty($_POST['name']))
+            return $this->artistView->showError("Falta nombre");
+        
+        if (!isset($_POST['biography']) || empty($_POST['biography']))
+            return $this->artistView->showError("Falta biografia");
+
         $name = $_POST['name'];
         $biography = $_POST['biography'];
 
@@ -68,6 +74,13 @@ class ArtistController
     public function editArtist($id)
     {
         AuthHelper::verify();
+
+        if (!isset($_POST['name']) || empty($_POST['name']))
+            return $this->artistView->showError("Falta nombre");
+        
+        if (!isset($_POST['biography']) || empty($_POST['biography']))
+            return $this->artistView->showError("Falta biografia");
+
         $name = $_POST['name'];
         $biography = $_POST['biography'];
 
