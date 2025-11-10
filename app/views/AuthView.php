@@ -1,5 +1,5 @@
 <?php
-require_once './app/views/view.php';
+require_once 'View.php';
 
 class AuthView extends View
 {

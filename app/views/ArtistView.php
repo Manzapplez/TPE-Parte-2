@@ -1,5 +1,6 @@
 <?php
 
+require_once 'View.php';
 const ARTIST_TEMPLATES = './app/templates/artistTemplates/';
 
 class ArtistView extends View
